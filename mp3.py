@@ -1,6 +1,5 @@
 import os
 import yt_dlp
-from pydub import AudioSegment
 
 def download_playlist(playlist_url, output_folder):
     if not os.path.exists(output_folder):
@@ -14,15 +13,25 @@ def download_playlist(playlist_url, output_folder):
             'preferredcodec': 'mp3',
             'preferredquality': '192',
         }],
-        'ignoreerrors': True  # تخطي الأخطاء والاستمرار في التحميل
+        'ignoreerrors': True 
     }
     
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([playlist_url])
     
-    print("\nAll possible tracks have been downloaded and saved as MP3!")
+    print(f"\nAll possible tracks from {playlist_url} have been downloaded and saved in '{output_folder}'!")
 
-# Playlist URL
-playlist_link = input("Enter the playlist URL: ")
-output_directory = "Downloaded_MP3"
-download_playlist(playlist_link, output_directory)
+
+playlists = []
+while True:
+    playlist_link = input("Enter the playlist URL (or 0 to start downloading): ")
+    if playlist_link == "0":
+        break
+    folder_name = input("Enter the folder name to save this playlist: ")
+    playlists.append((playlist_link, folder_name))
+
+
+for link, folder in playlists:
+    download_playlist(link, folder)
+    
+print("\nAll downloads are complete!")
