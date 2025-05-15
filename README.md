@@ -13,13 +13,7 @@ A simple and user-friendly desktop application to **download YouTube playlists a
 - 🛠️ Uses `yt-dlp` for robust, high-performance downloading and audio extraction.
 - 🛡️ Handles errors gracefully and informs the user.
 
----
 
-## 🖥️ Screenshots
-
-*(Add your app screenshots here to showcase UI)*
-
----
 
 ## 💻 Installation
 
